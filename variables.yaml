@@ -1,0 +1,11 @@
+variables:
+ - name: vmImageName
+   value: 'ubuntu-latest'
+ - name: ciBuildPath
+   value: 'templates/ci-build.yaml'
+ - name: dockerfilePathRedis
+   value: azure-vote/Dockerfile
+ - name: dockerfilePathApp
+   value: azure-vote/Dockerfile-for-app-service
+ - name: dockerRegistryServiceConnection
+   value: 'crlbgvoteapptestuk'

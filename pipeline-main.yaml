@@ -1,0 +1,6 @@
+jobs:
+- job: BuildPushRedisACR
+  pool:
+    vmImage: $(vmImageName)
+  steps:
+  - template: $(ciBuildPath) # Template reference
