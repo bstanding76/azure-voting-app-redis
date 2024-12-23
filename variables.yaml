@@ -1,9 +1,16 @@
 variables:
   # Container registry service connection established during pipeline creation
-  vmImageName: 'ubuntu-latest'
-  dockerRegistryServiceConnection: 'a5b226eb-f1ce-4977-811b-a5e0bede8043'
-  imageRepositoryRedis: 'bstandingazurevotingappredis'
-  imageRepositoryVotingApp: 'bstandingazurevotingapp'
-  containerRegistry: 'crlbgvoteapptestuk.azurecr.io'
-  dockerfilePath: '$(Build.SourcesDirectory)/azure-vote/Dockerfile'
-  tag: '$(Build.BuildId)'
+ - name: vmImageName
+   value: 'ubuntu-latest'
+ - name: dockerRegistryServiceConnection
+   value: 'a5b226eb-f1ce-4977-811b-a5e0bede8043'
+ - name: imageRepositoryRedis
+   value: 'bstandingazurevotingappredis'
+ - name: imageRepositoryVotingApp
+   value: 'bstandingazurevotingapp'
+ - name: containerRegistry:
+   value: 'crlbgvoteapptestuk.azurecr.io'
+ - name: dockerfilePath
+   value: '$(Build.SourcesDirectory)/azure-vote/Dockerfile'
+ - name: tag
+   value: '$(Build.BuildId)'
