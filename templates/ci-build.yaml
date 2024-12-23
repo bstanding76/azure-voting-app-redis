@@ -1,6 +1,4 @@
 # Agent VM image name
-vmImageName: $(vmImageName)
-
 stages:
   - stage: Build
     displayName: Build and push stage redis
