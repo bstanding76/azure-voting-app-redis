@@ -2,7 +2,7 @@ trigger:
   - master
 
 pool:
-  vmImage: ${{ variables.vmImageName }}
+  vmImage: 'ubuntu-latest'
 
 stages:
 - stage: Install
