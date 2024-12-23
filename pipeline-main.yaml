@@ -1,10 +1,11 @@
 trigger:
   - master
 
+variables:
+  - template: vars/vars-global.yaml
+
 pool:
   vmImage: 'ubuntu-latest'
 
 stages:
 - template: ${{ variables.ciBuildPath }} # Template reference
-  variables:
-    - template: vars/vars-global.yaml
