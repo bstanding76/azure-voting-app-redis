@@ -6,7 +6,8 @@ stages:
     displayName: Build and push stage redis
     jobs:
       - job: Build
-        variables: ../vars/vars-global.yaml
+    variables:
+      - template: vars/vars-global.yaml
         displayName: Build
         pool:
           vmImage: ${{ vmImageName }}
@@ -24,7 +25,8 @@ stages:
     displayName: Build and push stage voting app
     jobs:
       - job: Build
-        variables: ../vars/vars-global.yaml
+    variables:
+      - template: vars/vars-global.yaml
         displayName: Build
         pool:
           vmImage: ${{ vmImageName }}

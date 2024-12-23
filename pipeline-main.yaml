@@ -1,6 +1,7 @@
 jobs:
 - job: BuildPushRedisACR
-  variables: vars/vars-global.yaml
+  variables:
+    - template: vars/vars-global.yaml
   pool:
     vmImage: ${{ variables.vmImageName }}
   steps:
