@@ -1,3 +1,5 @@
+# File: templates/ci-build.yaml
+
 stages:
 - stage: Build
   displayName: Build and push stage redis
@@ -5,8 +7,6 @@ stages:
     - template: vars/vars-global.yaml
   jobs:
     - job: Build
-      pool:
-        vmImage: ${{ variables.vmImageName }}
       steps:
         - task: Docker@2
           displayName: Build and push an image to container registry
@@ -23,8 +23,6 @@ stages:
     - template: vars/vars-global.yaml
   jobs:
     - job: Build
-      pool:
-        vmImage: ${{ variables.vmImageName }}
       steps:
         - task: Docker@2
           displayName: Build and push an image to container registry
@@ -35,3 +33,4 @@ stages:
             containerRegistry: ${{ variables.dockerRegistryServiceConnection }}
             tags: |
               ${{ variables.tag }}
+              
