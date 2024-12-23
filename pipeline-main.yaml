@@ -1,11 +1,11 @@
 trigger:
   - master
 
-jobs:
-- job: BuildPushRedisACR
+pool:
+  vmImage: ${{ variables.vmImageName }}
+
+stages:
+- stage: Install
   variables:
     - template: vars/vars-global.yaml
-  pool:
-    vmImage: ${{ variables.vmImageName }}
-  steps:
-  - template: ${{ variables.ciBuildPath }} # Template reference
+- template: ${{ variables.ciBuildPath }} # Template reference
