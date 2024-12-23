@@ -8,7 +8,7 @@ variables:
    value: 'bstandingazurevotingappredis'
  - name: imageRepositoryVotingApp
    value: 'bstandingazurevotingapp'
- - name: containerRegistry:
+ - name: containerRegistry
    value: 'crlbgvoteapptestuk.azurecr.io'
  - name: dockerfilePath
    value: '$(Build.SourcesDirectory)/azure-vote/Dockerfile'
