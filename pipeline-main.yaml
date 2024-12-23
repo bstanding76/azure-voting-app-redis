@@ -6,6 +6,7 @@ pool:
 
 stages:
 - stage: Install
+  displayName: Build and push docker images
   variables:
     - template: vars/vars-global.yaml
 - template: ${{ variables.ciBuildPath }} # Template reference
