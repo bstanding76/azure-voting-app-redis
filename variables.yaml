@@ -14,3 +14,5 @@ variables:
    value: '$(Build.SourcesDirectory)/azure-vote/Dockerfile'
  - name: tag
    value: '$(Build.BuildId)'
+ - name: ciBuildPath
+   value: 'templates/ci-build.yaml'
