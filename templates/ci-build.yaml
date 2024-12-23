@@ -6,31 +6,30 @@ stages:
   variables:
     - template: vars/vars-global.yaml
   jobs:
-    - job: Build
-      steps:
-        - task: Docker@2
-          displayName: Build and push an image to container registry
-          inputs:
-            command: buildAndPush
-            repository: ${{ variables.imageRepositoryRedis }}
-            dockerfile: ${{ variables.dockerfilePath }}
-            containerRegistry: ${{ variables.dockerRegistryServiceConnection }}
-            tags: |
-              ${{ variables.tag }}
+  - job: Build
+    steps:
+    - task: Docker@2
+      displayName: Build and push an image to container registry
+      inputs:
+        command: buildAndPush
+        repository: ${{ variables.imageRepositoryRedis }}
+        dockerfile: ${{ variables.dockerfilePath }}
+        containerRegistry: ${{ variables.dockerRegistryServiceConnection }}
+        tags: |
+          ${{ variables.tag }}
 - stage: Build
   displayName: Build and push stage voting app
   variables:
     - template: vars/vars-global.yaml
   jobs:
-    - job: Build
-      steps:
-        - task: Docker@2
-          displayName: Build and push an image to container registry
-          inputs:
-            command: buildAndPush
-            repository: ${{ variables.imageRepositoryVotingApp }}
-            dockerfile: ${{ variables.dockerfilePath }}
-            containerRegistry: ${{ variables.dockerRegistryServiceConnection }}
-            tags: |
-              ${{ variables.tag }}
-              
+  - job: Build
+    steps:
+    - task: Docker@2
+      displayName: Build and push an image to container registry
+      inputs:
+        command: buildAndPush
+        repository: ${{ variables.imageRepositoryVotingApp }}
+        dockerfile: ${{ variables.dockerfilePath }}
+        containerRegistry: ${{ variables.dockerRegistryServiceConnection }}
+        tags: |
+          ${{ variables.tag }}
