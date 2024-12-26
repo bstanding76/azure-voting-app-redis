@@ -22,3 +22,5 @@ variables:
    value: 'crlbgvoteapptestuk58762a98-auth'
  - name: servicePortRedis
    value: 6379
+ - name: servicePortVoteApp
+   value: 80
