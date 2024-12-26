@@ -1,0 +1,32 @@
+stages:
+  - stage: DeployRedis
+    displayName: Deploy stage Redis
+    dependsOn: BuildRedis
+    jobs:
+    - deployment: Deploy
+      displayName: Deploy Job Redis
+#      pool:
+#        vmImage: $(vmImageName)
+      environment: 'bstanding76azurevotingappredis.default'
+      strategy:
+        runOnce:
+          deploy:
+            steps:
+            - task: KubernetesManifest@0
+              displayName: Create imagePullSecret
+              inputs:
+                action: createSecret
+                secretName: $(imagePullSecret)
+                dockerRegistryEndpoint: ${{ variables.dockerRegistryServiceConnection }}2
+
+            - task: KubernetesManifest@0
+              displayName: Deploy to Kubernetes cluster
+              inputs:
+                action: deploy
+                manifests: |
+                  $(Pipeline.Workspace)/manifests/deployment.yml
+                  $(Pipeline.Workspace)/manifests/service.yml
+                imagePullSecrets: |
+                  ${{ variables.imagePullSecret }}
+                containers: |
+                  ${{ variables.dockerRegistryServiceConnection }}/${{ variables.imageRepositoryRedis }}:${{ variables.tag }}
