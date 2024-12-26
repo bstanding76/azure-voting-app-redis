@@ -3,7 +3,7 @@ variables:
  - name: vmImageName
    value: 'ubuntu-latest'
  - name: environment
-   value: bstanding76azurevotingappredis
+   value: 'bstanding76azurevotingappredis'
  - name: dockerRegistryServiceConnection
    value: '9c1f4bbe-c685-445d-993f-9522d85a901b'
  - name: imageRepositoryRedis
