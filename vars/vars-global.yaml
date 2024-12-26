@@ -2,8 +2,8 @@ variables:
   # Container registry service connection established during pipeline creation
  - name: vmImageName
    value: 'ubuntu-latest'
- - name: environmentADM
-   value: 'bstanding76azurevotingappredis'
+ - name: environmentAKS
+   value: 'bstanding76azurevotingapp'
  - name: dockerRegistryServiceConnection
    value: '9c1f4bbe-c685-445d-993f-9522d85a901b'
  - name: imageRepositoryRedis
