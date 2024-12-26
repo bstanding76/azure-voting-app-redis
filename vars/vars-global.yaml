@@ -3,15 +3,17 @@ variables:
  - name: vmImageName
    value: 'ubuntu-latest'
  - name: dockerRegistryServiceConnection
-   value: 'a5b226eb-f1ce-4977-811b-a5e0bede8043'
+   value: '9c1f4bbe-c685-445d-993f-9522d85a901b'
  - name: imageRepositoryRedis
    value: 'bstandingazurevotingappredis'
  - name: imageRepositoryVotingApp
    value: 'bstandingazurevotingapp'
  - name: containerRegistry
    value: 'crlbgvoteapptestuk.azurecr.io'
- - name: dockerfilePath
+ - name: dockerfilePathRedis
    value: '$(Build.SourcesDirectory)/azure-vote/Dockerfile'
+ - name: dockerfilePathVoteApp
+   value: '$(Build.SourcesDirectory)/azure-vote/Dockerfile-for-app-service'
  - name: tag
    value: '$(Build.BuildId)'
  - name: ciBuildPath

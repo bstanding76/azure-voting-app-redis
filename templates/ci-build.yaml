@@ -9,7 +9,7 @@ stages:
         inputs:
           command: buildAndPush
           repository: ${{ variables.imageRepositoryRedis }}
-          dockerfile: ${{ variables.dockerfilePath }}
+          dockerfile: ${{ variables.dockerfilePathRedis }}
           containerRegistry: ${{ variables.dockerRegistryServiceConnection }}
           tags: |
             ${{ variables.tag }}
@@ -20,7 +20,7 @@ stages:
         inputs:
           command: buildAndPush
           repository: ${{ variables.imageRepositoryVotingApp }}
-          dockerfile: ${{ variables.dockerfilePath }}
+          dockerfile: ${{ variables.dockerfilePathVoteApp }}
           containerRegistry: ${{ variables.dockerRegistryServiceConnection }}
           tags: |
             ${{ variables.tag }}
