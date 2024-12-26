@@ -54,4 +54,4 @@ stages:
                     imagePullSecrets: |
                       ${{ variables.imagePullSecret }}
                     containers: |
-                      ${{ variables.dockerRegistryServiceConnection }}/${{ variables.imageRepositoryRedis }}:${{ variables.tag }}
+                      ${{ variables.dockerRegistryServiceConnection }}/${{ variables.imageRepositoryVotingApp }}:${{ variables.tag }}
