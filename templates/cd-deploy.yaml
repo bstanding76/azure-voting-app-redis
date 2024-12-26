@@ -5,6 +5,8 @@ stages:
     jobs:
     - deployment: Deploy
       displayName: Deploy Job Redis
+      environment:
+        name: ${{ variables.environment }}
       strategy:
         runOnce:
           deploy:
@@ -33,6 +35,8 @@ stages:
     jobs:
       - deployment: Deploy
         displayName: Deploy Job Redis
+        environment:
+          name: ${{ variables.environment }}
         strategy:
           runOnce:
             deploy:
