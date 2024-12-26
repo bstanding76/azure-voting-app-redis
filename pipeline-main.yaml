@@ -9,3 +9,5 @@ pool:
 
 stages:
 - template: ${{ variables.ciBuildPath }} # Template reference
+- template: ${{ variables.cdDeployPath }} # Template reference
+

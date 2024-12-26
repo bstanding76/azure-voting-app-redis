@@ -16,6 +16,8 @@ variables:
    value: '$(Build.BuildId)'
  - name: ciBuildPath
    value: 'templates/ci-build.yaml'
+ - name: cdDeployPath
+   value: 'templates/cd-deploy.yaml'
  - name: imagePullSecret
    value: 'crlbgvoteapptestuk58762a98-auth'
  - name: servicePortRedis
