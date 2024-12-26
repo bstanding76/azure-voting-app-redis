@@ -5,7 +5,7 @@ stages:
     jobs:
     - deployment: Deploy
       displayName: Deploy Job Redis
-      environment: "${{ variables.environmentAKS }}"
+      environment: 'bstanding76azurevotingapp'
       strategy:
         runOnce:
           deploy:
@@ -34,7 +34,7 @@ stages:
     jobs:
       - deployment: Deploy
         displayName: Deploy Job Redis
-        environment: "${{ variables.environmentAKS }}"
+        environment: 'bstanding76azurevotingapp'
         strategy:
           runOnce:
             deploy:
