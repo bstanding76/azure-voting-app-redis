@@ -24,7 +24,7 @@ stages:
             echo "##vso[task.setvariable variable=buildjob;]voteap_$(Build.BuildNumber)_${{ variable.datetime }}.yaml"
             rename azure-vote-all-in-one-redis.yaml ${buildjob}
 
-- template: ${{ variables.ciBuildPath }} # Template reference
-- template: ${{ variables.cdDeployPath }} # Template reference
+    - template: ${{ variables.ciBuildPath }} # Template reference
+    - template: ${{ variables.cdDeployPath }} # Template reference
 
 
