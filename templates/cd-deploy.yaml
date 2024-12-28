@@ -5,8 +5,8 @@ parameters:
 
 
 stages:
-  - stage: DeployRedis
-    displayName: Deploy stage Redis
+  - stage: DeployRedisAndApp
+    displayName: Deploy stage Redis and App
     dependsOn: BuildRedis
     jobs:
     - deployment: Deploy
@@ -28,38 +28,10 @@ stages:
               inputs:
                 action: deploy
                 manifests: |
-                  $(Pipeline.Workspace)/manifests/deployment-redis.yml
-                  $(Pipeline.Workspace)/manifests/service-redis.yml
+                  $(Pipeline.Workspace)/manifests/voteap_$(Build.BuildNumber)_$(datetime).yaml
+#                  $(Pipeline.Workspace)/manifests/deployment-redis.yml
+#                  $(Pipeline.Workspace)/manifests/service-redis.yml
                 imagePullSecrets: |
                   ${{ variables.imagePullSecret }}
                 containers: |
                   ${{ variables.dockerRegistryServiceConnection }}/${{ variables.imageRepositoryRedis }}:${{ variables.tag }}
-  - stage: DeployVoteApp
-    displayName: Deploy stage VoteApp
-    dependsOn: BuildRedis
-    jobs:
-      - deployment: Deploy
-        displayName: Deploy Job Redis
-        environment: ${{ parameters.environmentAKS }}
-        strategy:
-          runOnce:
-            deploy:
-              steps:
-                - task: KubernetesManifest@0
-                  displayName: Create imagePullSecret
-                  inputs:
-                    action: createSecret
-                    secretName: $(imagePullSecret)
-                    dockerRegistryEndpoint: ${{ variables.dockerRegistryServiceConnection }}
-
-                - task: KubernetesManifest@0
-                  displayName: Deploy to Kubernetes cluster
-                  inputs:
-                    action: deploy
-                    manifests: |
-                      $(Pipeline.Workspace)/manifests/deployment-voteapp.yaml
-                      $(Pipeline.Workspace)/manifests/service-voteapp.yaml
-                    imagePullSecrets: |
-                      ${{ variables.imagePullSecret }}
-                    containers: |
-                      ${{ variables.dockerRegistryServiceConnection }}/${{ variables.imageRepositoryVotingApp }}:${{ variables.tag }}
