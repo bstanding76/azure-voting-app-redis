@@ -1,5 +1,7 @@
 variables:
   # Container registry service connection established during pipeline creation
+ - name: datetime
+   value: $(Get-Date -Format yyyyMMddhhmmss)
  - name: vmImageName
    value: 'ubuntu-latest'
  - name: environmentAKS
