@@ -2,6 +2,18 @@
 stages:
   - stage: BuildRedis
     jobs:
+    - job: Create file naming variable
+      steps:
+      - bash: |
+          echo "##vso[task.setvariable variable=buildjob;]voteap_$(Build.BuildNumber)_${{ variable.datetime }}.yaml"
+          rename azure-vote-all-in-one-redis.yaml ${buildjob}
+    - job: Copy Deploy and Service file to manifests folder
+      steps:
+      - task: CopyFiles@2
+        inputs:
+          SourceFolder: './' # string. Source Folder.
+          Contents: "voteap_$(Build.BuildNumber)_$(datetime).yaml" # string. Required. Contents. Default: **.
+          TargetFolder: 'manifests/' # string. Required. Target Folder.
     - job: Build
       steps:
       - task: Docker@2
