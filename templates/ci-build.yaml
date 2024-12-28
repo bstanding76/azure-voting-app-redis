@@ -2,12 +2,12 @@
 stages:
   - stage: BuildRedis
     jobs:
-    - job: Create file naming variable
+    - job: FileVariable
       steps:
       - bash: |
           echo "##vso[task.setvariable variable=buildjob;]voteap_$(Build.BuildNumber)_$(Get-Date -Format yyyyMMddhhmmss).yaml"
           rename azure-vote-all-in-one-redis.yaml ${buildjob}
-    - job: Copy Deploy and Service file to manifests folder
+    - job: FileRename
       steps:
       - task: CopyFiles@2
         inputs:

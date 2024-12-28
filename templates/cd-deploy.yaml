@@ -28,7 +28,7 @@ stages:
               inputs:
                 action: deploy
                 manifests: |
-                  $(Pipeline.Workspace)/manifests/voteap_$(Build.BuildNumber)_$(datetime).yaml
+                  $(Pipeline.Workspace)/manifests/voteap_$(Build.BuildNumber)_$(Get-Date -Format yyyyMMddhhmmss).yaml
 #                  $(Pipeline.Workspace)/manifests/deployment-redis.yml
 #                  $(Pipeline.Workspace)/manifests/service-redis.yml
                 imagePullSecrets: |
