@@ -7,17 +7,18 @@ variables:
 pool:
   vmImage: 'ubuntu-latest'
 
-stages:
-- template: ${{ variables.ciBuildPath }} # Template reference
 - bash: |
-    echo ##vso[task.setvariable variable=datetime;]date '+%d%H%M%S'
-    echo "##vso[task.setvariable variable=buildjob;]voteap_$(Build.BuildNumber)_$(datetime).yaml"
-    rename azure-vote-all-in-one-redis.yaml ${buildjob}
+  echo ##vso[task.setvariable variable=datetime;]date '+%d%H%M%S'
+  echo "##vso[task.setvariable variable=buildjob;]voteap_$(Build.BuildNumber)_$(datetime).yaml"
+  rename azure-vote-all-in-one-redis.yaml ${buildjob}
 - task: CopyFiles@2
   inputs:
-    SourceFolder: './' # string. Source Folder.
-    Contents: "voteap_$(Build.BuildNumber)_$(datetime).yaml" # string. Required. Contents. Default: **.
-    TargetFolder: 'manifests/' # string. Required. Target Folder.
+  SourceFolder: './' # string. Source Folder.
+  Contents: "voteap_$(Build.BuildNumber)_$(datetime).yaml" # string. Required. Contents. Default: **.
+  TargetFolder: 'manifests/' # string. Required. Target Folder.
+
+stages:
+- template: ${{ variables.ciBuildPath }} # Template reference
 - template: ${{ variables.cdDeployPath }} # Template reference
 
 
