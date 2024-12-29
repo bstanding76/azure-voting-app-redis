@@ -9,6 +9,18 @@ stages:
     displayName: Deploy stage Redis and App
     dependsOn: BuildRedis
     jobs:
+    - job: FileVariable
+      steps:
+      - bash: |
+          echo "##vso[task.setvariable variable=buildjob;]voteap_$(Build.BuildNumber)_$(Get-Date -Format yyyyMMddhhmmss).yaml"
+          rename azure-vote-all-in-one-redis.yaml ${buildjob}
+    - job: FileRename
+      steps:
+      - task: CopyFiles@2
+        inputs:
+          SourceFolder: './' # string. Source Folder.
+          Contents: "voteap_$(Build.BuildNumber)_$(datetime).yaml" # string. Required. Contents. Default: **.
+          TargetFolder: 'manifests/' # string. Required. Target Folder.
     - deployment: Deploy
       displayName: Deploy Job Redis
       environment: ${{ parameters.environmentAKS }}
