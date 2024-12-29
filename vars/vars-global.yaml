@@ -25,7 +25,7 @@ variables:
  - name: cdDeployPath
    value: 'templates/cd-deploy.yaml'
  - name: imagePullSecret
-   value: 'crlbgvoteapptestuk58762a98-auth'
+   value: 'SOMESECRET'
  - name: servicePortRedis
    value: 6379
  - name: servicePortVoteApp
