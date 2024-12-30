@@ -24,3 +24,8 @@ stages:
           containerRegistry: ${{ variables.dockerRegistryServiceConnection }}
           tags: |
             ${{ variables.tag }}
+    - job: PublishBuildArtif
+      steps:
+      - publish: $(System.DefaultWorkingDirectory)/pipeline-artifacts/democi
+        artifact: democi
+

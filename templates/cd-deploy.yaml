@@ -1,3 +1,5 @@
+# File: templates/cd-deploy.yaml
+
 parameters:
   - name: environmentAKS
     type: string
@@ -47,3 +49,7 @@ stages:
                   ${{ variables.imagePullSecret }}
                 containers: |
                   ${{ variables.dockerRegistryServiceConnection }}/${{ variables.imageRepositoryRedis }}:${{ variables.tag }}
+    - job: PublishBuildArtif
+      steps:
+      - download: current
+        artifact: democi
